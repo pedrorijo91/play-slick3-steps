@@ -1,6 +1,6 @@
 # play-slick3-steps example
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/740e586f17964c779ce3c146c272c560)](https://www.codacy.com)
-[![Build Status](https://magnum.travis-ci.com/pedrorijo91/play-slick3-steps.svg?token=Pakvz7ifqbnQuFmt17tD)](https://magnum.travis-ci.com/pedrorijo91/play-slick3-steps)
+[![Build Status](https://travis-ci.org/pedrorijo91/play-slick3-steps.svg)](https://travis-ci.org/pedrorijo91/play-slick3-steps)
 
 Simple working app using play 2.4 and slick 3.1.0 with mysql. Step by step tutorial at [https://pedrorijo91.github.io/blog/play-slick/](https://pedrorijo91.github.io/blog/play-slick/)
 
