@@ -6,7 +6,7 @@ import play.api.data.Forms._
 import play.api.db.slick.DatabaseConfigProvider
 import scala.concurrent.Future
 import slick.driver.JdbcProfile
-import slick.driver.MySQLDriver.api._
+import slick.driver.H2Driver.api._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 case class User(id: Long, firstName: String, lastName: String, mobile: Long, email: String)
