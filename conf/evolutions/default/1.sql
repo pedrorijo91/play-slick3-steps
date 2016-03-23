@@ -1,13 +1,12 @@
-# User schema
-
 # --- !Ups
-create table `user` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `first_name` TEXT NOT NULL,
-  `last_name` TEXT NOT NULL,
-  `mobile` BIGINT NOT NULL,
-  `email` TEXT NOT NULL
-)
+CREATE TABLE PUBLIC.USER
+(
+  ID         BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  FIRST TEXT                              NOT NULL,
+  LAST  TEXT                              NOT NULL,
+  MOBILE     BIGINT                            NOT NULL,
+  EMAIL      TEXT                              NOT NULL
+);
 
 # --- !Downs
-drop table `user`
+DROP TABLE PUBLIC.USER
