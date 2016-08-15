@@ -1,12 +1,18 @@
-package model
+package models
+
+import javax.inject._
 
 import play.api.Play
+import play.api.Application
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.db.slick.DatabaseConfigProvider
-import scala.concurrent.Future
+
+import slick.backend.DatabaseConfig
 import slick.driver.JdbcProfile
 import slick.driver.MySQLDriver.api._
+
+import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
 case class User(id: Long, firstName: String, lastName: String, mobile: Long, email: String)
@@ -37,28 +43,32 @@ class UserTableDef(tag: Tag) extends Table[User](tag, "user") {
     (id, firstName, lastName, mobile, email) <>(User.tupled, User.unapply)
 }
 
-object Users {
+@Singleton
+class Users @Inject() (appProvider: Provider[Application]) {
 
-  val dbConfig = DatabaseConfigProvider.get[JdbcProfile](Play.current)
+  // This is a hack around legacy code in play-slick.
+  // c.f. https://github.com/playframework/playframework/blob/2.5.4/documentation/manual/releases/release25/migration25/Migration25.md#handling-legacy-components
+  def dbConfig(): DatabaseConfig[JdbcProfile] =
+    DatabaseConfigProvider.get[JdbcProfile](appProvider.get())
 
   val users = TableQuery[UserTableDef]
 
   def add(user: User): Future[String] = {
-    dbConfig.db.run(users += user).map(res => "User successfully added").recover {
+    dbConfig().db.run(users += user).map(res => "User successfully added").recover {
       case ex: Exception => ex.getCause.getMessage
     }
   }
 
   def delete(id: Long): Future[Int] = {
-    dbConfig.db.run(users.filter(_.id === id).delete)
+    dbConfig().db.run(users.filter(_.id === id).delete)
   }
 
   def get(id: Long): Future[Option[User]] = {
-    dbConfig.db.run(users.filter(_.id === id).result.headOption)
+    dbConfig().db.run(users.filter(_.id === id).result.headOption)
   }
 
   def listAll: Future[Seq[User]] = {
-    dbConfig.db.run(users.result)
+    dbConfig().db.run(users.result)
   }
 
 }

@@ -1,4 +1,4 @@
-@(userForm: Form[model.UserFormData],users : Seq[model.User])(implicit request: RequestHeader)
+@(userForm: Form[models.UserFormData],users : Seq[models.User])(implicit request: RequestHeader)
 @main() {
 
     <form id="user-data-form" role="form" action='@routes.ApplicationController.addUser()' method="post" class="form-horizontal" align="center" autocomplete="off">
