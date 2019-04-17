@@ -1,23 +1,25 @@
-package service
+package services
 
-import model.{User, Users}
+import com.google.inject.Inject
+import models.{User, Users}
+
 import scala.concurrent.Future
 
-object UserService {
+class UserService @Inject() (users: Users) {
 
   def addUser(user: User): Future[String] = {
-    Users.add(user)
+    users.add(user)
   }
 
   def deleteUser(id: Long): Future[Int] = {
-    Users.delete(id)
+    users.delete(id)
   }
 
   def getUser(id: Long): Future[Option[User]] = {
-    Users.get(id)
+    users.get(id)
   }
 
   def listAllUsers: Future[Seq[User]] = {
-    Users.listAll
+    users.listAll
   }
 }

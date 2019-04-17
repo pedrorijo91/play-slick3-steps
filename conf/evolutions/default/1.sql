@@ -1,6 +1,7 @@
-# User schema
+-- User schema
 
-# --- !Ups
+-- !Ups
+
 create table `user` (
   `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `first_name` TEXT NOT NULL,
@@ -9,5 +10,5 @@ create table `user` (
   `email` TEXT NOT NULL
 )
 
-# --- !Downs
+-- !Downs
 drop table `user`
