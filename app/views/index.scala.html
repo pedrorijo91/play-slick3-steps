@@ -1,135 +1,135 @@
-@(userForm: Form[model.UserFormData],users : Seq[model.User])(implicit request: RequestHeader)
-@main() {
+@(userForm: Form[models.UserFormData],users : Seq[models.User])(implicit request: RequestHeader)
+  @main() {
 
     <form id="user-data-form" role="form" action='@routes.ApplicationController.addUser()' method="post" class="form-horizontal" align="center" autocomplete="off">
 
-        <fieldset class="user-fieldset">
+      <fieldset class="user-fieldset">
 
-            <div class="user-form">
-                <label class="form-title" style="color: #F8741B; font-size: 22px;font-weight: bold; text-decoration:none">title</label>
-            </div>
-            <br/>
-            <table align="center" cellspacing="20">
-                <tr>
-                    <td align="left">
-                        <div class="user-form" id="firstName_field_label">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <strong>firstname</strong> :
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td align="center">
-                        <div class="user-form" id="firstName_field_value">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input type="text" id="firstName" name="firstName" value="" placeholder="First Name" class="form-control input-lg" required>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="left">
-                        <div class="user-form" id="lastName_field_label">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <strong>lastname</strong> :
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td align="center">
-                        <div class="user-form" id="lastName_field_value">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input type="text" id="lastName" name="lastName" value="" placeholder="Last Name" class="form-control input-lg" required>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="left">
-                        <div class="user-form" id="mobile_field_label">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <strong>mobile</strong> :
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td align="center">
-                        <div class="user-form" id="mobile_field_value">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input type="tel" id="mobile" name="mobile" placeholder="Mobile" class="form-control input-lg" required>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="left">
-                        <div class="user-form" id="email_field_label">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <strong>email</strong> :
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td align="center">
-                        <div class="user-form" id="email_field_value">
-                            <div class="controls col-xs-offset-3 col-xs-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input type="email" id="email" name="email" placeholder="Email" class="form-control input-lg" required>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <br/>
-            <div class="form-actions controls ynt-btn-xlarge">
-                <button type="submit" class="btn btn-primary ynt-btn-orange">Add</button>
-            </div>
+        <div class="user-form">
+          <label class="form-title" style="color: #F8741B; font-size: 22px;font-weight: bold; text-decoration:none">title</label>
+        </div>
+        <br/>
+        <table align="center" cellspacing="20">
+          <tr>
+            <td align="left">
+              <div class="user-form" id="firstName_field_label">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <strong>firstname</strong> :
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td align="center">
+              <div class="user-form" id="firstName_field_value">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" id="firstName" name="firstName" value="" placeholder="First Name" class="form-control input-lg" required>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <div class="user-form" id="lastName_field_label">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <strong>lastname</strong> :
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td align="center">
+              <div class="user-form" id="lastName_field_value">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" id="lastName" name="lastName" value="" placeholder="Last Name" class="form-control input-lg" required>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <div class="user-form" id="mobile_field_label">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <strong>mobile</strong> :
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td align="center">
+              <div class="user-form" id="mobile_field_value">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="tel" id="mobile" name="mobile" placeholder="Mobile" class="form-control input-lg" required>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <div class="user-form" id="email_field_label">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <strong>email</strong> :
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td align="center">
+              <div class="user-form" id="email_field_value">
+                <div class="controls col-xs-offset-3 col-xs-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="email" id="email" name="email" placeholder="Email" class="form-control input-lg" required>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <br/>
+        <div class="form-actions controls ynt-btn-xlarge">
+          <button type="submit" class="btn btn-primary ynt-btn-orange">Add</button>
+        </div>
 
-        </fieldset>
+      </fieldset>
     </form>
 
     <div class="user-display" >
-        <fieldset>
-            <legend align="center"><h3>Registered Users</h3></legend>
-            <table cellspacing="20">
-                <tr>
-                    <th>userid</th>
-                    <th>firstname</th>
-                    <th>lastname</th>
-                    <th>mobile</th>
-                    <th>email</th>
-                </tr>
-                @for(user <- users){
-                    <tr>
-                        <td>@user.id</td>
-                        <td>@user.firstName</td>
-                        <td>@user.lastName</td>
-                        <td>@user.mobile</td>
-                        <td>@user.email</td>
-                        <td><a href="@routes.ApplicationController.deleteUser(user.id)">delete</a></td>
-                    </tr>
-                }
-            </table>
-        </fieldset>
+      <fieldset>
+        <legend align="center"><h3>Registered Users</h3></legend>
+        <table cellspacing="20">
+          <tr>
+            <th>userid</th>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>mobile</th>
+            <th>email</th>
+          </tr>
+          @for(user <- users){
+            <tr>
+              <td>@user.id</td>
+              <td>@user.firstName</td>
+              <td>@user.lastName</td>
+              <td>@user.mobile</td>
+              <td>@user.email</td>
+              <td><a href="@routes.ApplicationController.deleteUser(user.id)">delete</a></td>
+            </tr>
+          }
+        </table>
+      </fieldset>
     </div>
 
-}
+  }

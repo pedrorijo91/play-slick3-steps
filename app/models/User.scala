@@ -1,13 +1,13 @@
-package model
+package models
 
-import play.api.Play
+import com.google.inject.Inject
 import play.api.data.Form
+import play.api.data.Forms.mapping
 import play.api.data.Forms._
-import play.api.db.slick.DatabaseConfigProvider
-import scala.concurrent.Future
-import slick.driver.JdbcProfile
-import slick.driver.MySQLDriver.api._
-import scala.concurrent.ExecutionContext.Implicits.global
+import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
+import slick.jdbc.JdbcProfile
+
+import scala.concurrent.{ExecutionContext, Future}
 
 case class User(id: Long, firstName: String, lastName: String, mobile: Long, email: String)
 
@@ -25,6 +25,8 @@ object UserForm {
   )
 }
 
+import slick.jdbc.MySQLProfile.api._
+
 class UserTableDef(tag: Tag) extends Table[User](tag, "user") {
 
   def id = column[Long]("id", O.PrimaryKey,O.AutoInc)
@@ -37,9 +39,7 @@ class UserTableDef(tag: Tag) extends Table[User](tag, "user") {
     (id, firstName, lastName, mobile, email) <>(User.tupled, User.unapply)
 }
 
-object Users {
-
-  val dbConfig = DatabaseConfigProvider.get[JdbcProfile](Play.current)
+class Users @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)(implicit executionContext: ExecutionContext) extends HasDatabaseConfigProvider[JdbcProfile] {
 
   val users = TableQuery[UserTableDef]
 
@@ -58,7 +58,7 @@ object Users {
   }
 
   def listAll: Future[Seq[User]] = {
-    dbConfig.db.run(users.result)
+   dbConfig.db.run(users.result)
   }
 
 }
